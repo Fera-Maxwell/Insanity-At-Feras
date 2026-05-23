@@ -1,0 +1,137 @@
+# PROJECT_FERA: Entity Analysis & Behavioral Profiles
+# File Status: Restricted / Internal Use Only
+# Subject Type: Biological Entities (Living Pokemon)
+# Location: Fera's Pizzeria - Protective Custody/Housing
+
+================================================================================
+JASON (Flareon)
+================================================================================
+Species:    Flareon (Fire Type)
+AI Scaling: N1:0  N2:1  N3:5  N4:8  N5:13  N6:17  N7:XX
+
+Profile:
+  Generally jovial and hospitable. Known for pizza-sharing behavior and
+  excessive hospitality toward staff.
+
+Behavioral Trigger:
+  Extremely sensitive regarding physical trauma (Burnt Tail).
+  Mentioning his tail OR typing tail-related queries into the terminal
+  may trigger immediate aggression/biting.
+
+Conditions:
+  - Burnt tail
+  - Aching front tooth
+
+Movement:
+  N1:   Random (02/05 split) -> random halls -> random door
+  N2+:  Direct path 01 -> 02 -> 03(50%)/04(50%) -> 06/07 -> door
+  Blind spot: Bathrooms (no camera). Reappears at random door.
+
+================================================================================
+FERA (Eevee)
+================================================================================
+Species:    Eevee (Normal Type - Lead)
+AI Scaling: N1:2  N2:4  N3:7  N4:13  N5:16  N6:19  N7:XX
+
+Profile:
+  Main focus of the facility. Quiet, traumatized, suffers from
+  sleep-deprivation-induced fugue states.
+
+Psych-Eval:
+  Displays Split Personality Disorder. Capable of weak biting,
+  though her "other half" (NULL influence) is significantly more lethal.
+
+Conditions:
+  - Traumatized
+  - Speech impediment
+  - Unclothing-related social anxiety (fur density provides full coverage)
+
+Movement:
+  N1:   01 -> 02 -> 10(25%)/03(75%) -> 11(25%)/06(75%) -> Left Door
+  N2+:  01 -> 02 -> 03 -> 06 -> Left Door (direct, no detours)
+  Note: NULL influence means she never retreats after N1.
+
+================================================================================
+MAY (Vaporeon)
+================================================================================
+Species:    Vaporeon (Water Type)
+AI Scaling: N1:2  N2:4  N3:7  N4:13  N5:16  N6:19  N7:XX
+
+Profile:
+  Maternal figure to Fera. Extremely high empathy; known to assist
+  lost children. Carrying immense psychological burden — hiding the
+  truth of Fera's actions to protect her.
+
+Conditions:
+  - 20 days pregnant (Sire: Jay)
+  - Emotionally compromised by guilt
+
+Movement:
+  N1:   01 -> 02 -> follows Fera to 10 if Fera went there, else 04(50%)/08(50%)
+              -> 07 -> Right Door
+  N2+:  01 -> 02 -> 04(75%)/08(25%) -> 07 -> Right Door
+  Special: If May enters CAM 08 (Kitchen), she STAYS there for 60 seconds
+           before continuing. She's cooking. Leave her alone.
+
+================================================================================
+JAY (Jolteon)
+================================================================================
+Species:    Jolteon (Electric Type)
+AI Scaling: N1:0  N2:1  N3:3  N4:7  N5:14  N6:17  N7:XX
+
+Profile:
+  Formerly the main attraction and storyteller. Currently permanently
+  detained behind his curtains (CAM 09).
+
+Behavioral History:
+  [REDACTED]. History of predatory behavior toward minors led to the
+  original facility shutdown and his permanent isolation.
+
+Conditions:
+  - Permanent isolation, clouding mental state
+  - Boredom system: Video Time drains over time (rate scales with AI level)
+  - Watching CAM 09 refills Video Time (you're keeping him entertained)
+  - Video Time hits 0% = Jay enters vents
+
+Movement:
+  Starts at CAM 09. Does not roam until Video Time depletes.
+  Same door-approach mechanic as others once he enters vents.
+
+================================================================================
+NULL (The Cloud)
+================================================================================
+Species:    Unknown
+Spawn:      1 in 420 chance per camera switch / dial-in interaction
+
+Profile:
+  A parasitic mental entity residing within Fera.
+  Goal: To break, cloud, and control the host.
+  Responsible for self-mutilation incidents involving Fera's [REDACTED] areas.
+
+Behavior:
+  - Passive influence on Fera throughout the game (lore)
+  - Active interference with CAM 12 security feed
+  - On spawn: crashes the game after ~2 seconds (no warning)
+  - Acts as Golden Freddy equivalent
+  - Cannot affect Blaze (cross blessed by priest repels NULL)
+
+Warning:
+  Any staff member attempting to investigate NULL's influence on Fera's
+  physical condition will be terminated immediately by unknown reasons,
+  for no one knows yet.
+
+================================================================================
+MOVEMENT TICK (all characters)
+================================================================================
+  - 1/20 chance every second to attempt a move
+  - AI level does NOT change the probability per tick
+  - AI level scales night difficulty via the base values above
+  - Higher AI = character is "active" on earlier nights with higher move chance
+
+================================================================================
+DOOR PIPELINE (Fera, May, Jason)
+================================================================================
+  roaming -> hall (CAM 03/04) -> door_cam (CAM 06/07) -> at_door
+  at_door + door OPEN  = 20s timer -> DEAD
+  at_door + door CLOSE = timer clamped to 5s -> retreat to spawn on timeout
+  Spawn: Fera/May/Jason = CAM 01, Jay = CAM 09

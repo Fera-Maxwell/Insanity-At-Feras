@@ -1,3 +1,4 @@
+#!/bin/
 # WHAT ARE YOU DOING HERE!?
 # Alright fine
 # Since you came here, BOTHERED TO COME
@@ -1260,7 +1261,6 @@ def trigger_rat_trap():
     t = threading.Thread(target=_run, daemon=True)
     t.start()
 # ─────────────────────────────────────────────────────────────────────────────
-# ENTRY POINT
 # ─────────────────────────────────────────────────────────────────────────────
 def main():
     window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, resizable=False)
